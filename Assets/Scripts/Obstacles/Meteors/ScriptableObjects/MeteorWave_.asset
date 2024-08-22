@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f89c9a9db52ed3c4c8924335b971e28b, type: 3}
+  m_Name: MeteorWave_
+  m_EditorClassIdentifier: 
+  meteorPrefabList:
+  - {fileID: 872189783841171210, guid: f50c1e83d3ad7494f9732ca3c8fd299a, type: 3}
+  pathList:
+  - {fileID: 5246597897814869954, guid: 1a7130dcfc2262040809a8e521c06d39, type: 3}
+  - {fileID: 2030565100712269565, guid: f513817e7e58c3f4b970d08137df7cbc, type: 3}
+  - {fileID: 9158218659349470025, guid: 06be751fd98b4c242bc592a000615a10, type: 3}
+  - {fileID: 885516901402107092, guid: 622820bf2d276944fb9b5835b6102a80, type: 3}
+  - {fileID: 3585017565758692185, guid: dbbee067c3d0c1b4da68806a1095ccc1, type: 3}
+  speed: 30
+  timeBetweenSpawn: 1.5

@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - Projectile
+  - EnemyProjectile
+  - PlayerProjectile
+  - PowerUp_Shield
+  - PowerUp_Health
+  - PowerUp_Spread
+  - Projectile_Enemy
+  - Projectile_Player
+  - Obstacle
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Background
+  - Water
+  - UI
+  - Player
+  - Enemy
+  - Projectile
+  - PowerUp_Spread
+  - PowerUp_Health
+  - PowerUp_Shield
+  - NoPost
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Trail
+    uniqueID: 39658999
+    locked: 0
+  - name: Projectile
+    uniqueID: 2188925907
+    locked: 0
+  - name: Character
+    uniqueID: 480389323
+    locked: 0
+  - name: Front
+    uniqueID: 2454884735
+    locked: 0
