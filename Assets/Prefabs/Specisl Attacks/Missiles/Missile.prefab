@@ -4931,6 +4931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionVFX: {fileID: 5093125394252743045, guid: c071abcfa3fc26a4d93eabd61079e245, type: 3}
+  shakeSettings: {fileID: 11400000, guid: 2e85dfe8104bc6342b8b51dd8ab48701, type: 2}
 --- !u!50 &3538871580508310747
 Rigidbody2D:
   serializedVersion: 4

@@ -6,6 +6,9 @@ public class Missile : MonoBehaviour
 {
     [SerializeField] GameObject explosionVFX;
 
+    [Tooltip("Determine the screen shake details when missile explodes")]
+    [SerializeField] ShakeSettingsSO shakeSettings;
+
     GameObject target;
     GameObject targetCrosshair;
     Rigidbody2D rb;
@@ -74,10 +77,11 @@ public class Missile : MonoBehaviour
 
     void HandleHit()
     {
+        ScreenShakeHandler.Instance.ShakeCamera(shakeSettings);
         if (target != null)
         {
             Instantiate(explosionVFX, target.transform.position, Quaternion.identity);
-            target.GetComponent<IDamagable>().TakeDamage("Player", damage);
+            target.GetComponent<IDamagable>()?.TakeDamage("Player", damage);
         }
         else
         {

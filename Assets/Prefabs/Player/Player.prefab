@@ -97,12 +97,12 @@ GameObject:
   - component: {fileID: 1876701472211033790}
   - component: {fileID: 8533485347258509286}
   - component: {fileID: 7710721701748542015}
-  - component: {fileID: 2586277029201843251}
-  - component: {fileID: 4356126664510101328}
-  - component: {fileID: 9015055581710627704}
   - component: {fileID: 2831833195993917186}
   - component: {fileID: 112077165232474630}
   - component: {fileID: 1450810314699753757}
+  - component: {fileID: 2586277029201843251}
+  - component: {fileID: 4356126664510101328}
+  - component: {fileID: 9015055581710627704}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -195,6 +195,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   currentHealth: 0
+--- !u!114 &2831833195993917186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116526368994307474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8598ceed31d244840bb145daa36f88bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatData:
+    shootingPattern: 0
+    numberOfProjectiles: 1
+    fireRate: 0.2
+    projectileSpeed: 30
+    projectileAngleSpread: 2
+    projectileSize: 1
+    shootDirection: 1
+    damage: 10
+    projectileColor: {fileID: 2100000, guid: 74f9dbcb48d7a8045b2017b8502d45e0, type: 2}
+  takeDamageShakeDetails: {fileID: 11400000, guid: 895878f7e05402b41bf1b0872780d50d, type: 2}
+--- !u!114 &112077165232474630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116526368994307474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8fb8ef4b0bb7134ca8f48d13b6cda75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasShield: 0
+  shieldDurabilityAmount: 50
+  shieldGO: {fileID: 1128699550144436855}
+--- !u!114 &1450810314699753757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116526368994307474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bbdef57cfa41254388c7b864dc951f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specialAttackList:
+  - {fileID: 11400000, guid: ae90a1cdf3939c0498d8914cb7598f78, type: 2}
 --- !u!58 &2586277029201843251
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -5027,54 +5079,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &2831833195993917186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116526368994307474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8598ceed31d244840bb145daa36f88bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  combatData:
-    shootingPattern: 0
-    numberOfProjectiles: 1
-    fireRate: 0.2
-    projectileSpeed: 30
-    damage: 10
-    projectileColor: {fileID: 2100000, guid: 74f9dbcb48d7a8045b2017b8502d45e0, type: 2}
---- !u!114 &112077165232474630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116526368994307474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8fb8ef4b0bb7134ca8f48d13b6cda75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasShield: 0
-  shieldDurabilityAmount: 50
-  shieldGO: {fileID: 1128699550144436855}
---- !u!114 &1450810314699753757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116526368994307474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bbdef57cfa41254388c7b864dc951f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  specialAttackList:
-  - {fileID: 11400000, guid: ae90a1cdf3939c0498d8914cb7598f78, type: 2}
 --- !u!1 &1128699550144436855
 GameObject:
   m_ObjectHideFlags: 0

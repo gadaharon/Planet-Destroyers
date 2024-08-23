@@ -8,6 +8,9 @@ public class PlayerCombat : MonoBehaviour
 
     [SerializeField] CombatData combatData;
 
+    [Tooltip("Determines the screen shake when player takes damage")]
+    [SerializeField] ShakeSettingsSO takeDamageShakeDetails;
+
 
     ShooterManager shooterManager;
     Health health;
@@ -87,6 +90,7 @@ public class PlayerCombat : MonoBehaviour
             else
             {
                 health.TakeDamage(damage);
+                ScreenShakeHandler.Instance.ShakeCamera(takeDamageShakeDetails);
                 UIManager.Instance.UpdatePlayerHealthSliderValue(health.CurrentHealth);
             }
         }
