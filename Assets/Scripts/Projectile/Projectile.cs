@@ -85,6 +85,6 @@ public class Projectile : MonoBehaviour
     {
         gameObject.tag = "Projectile";
         SetProjectileSize(defaultProjectileSize);
-        ProjectilePool2.Instance.ReturnProjectile(gameObject);
+        ProjectilePool.Instance.ReturnProjectile(gameObject);
     }
 }

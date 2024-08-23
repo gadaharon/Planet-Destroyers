@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
-    public static UIManager Instance { get; private set; }
-
     [Header("PLAYER HEALTH BAR SLIDER")]
     [SerializeField] Slider playerHealthBarSlider;
 
@@ -21,18 +17,6 @@ public class UIManager : MonoBehaviour
 
     [Header("SPECIAL ATTACK IS FULL INDICATOR ACTIVE VFX")]
     [SerializeField] ParticleSystem specialAttackFullVFX;
-
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     // Player Health Slider
     public void SetPlayerHealthSliderMaxValue(int maxValue)

@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public class ProjectilePool2 : MonoBehaviour
+public class ProjectilePool2 : Singleton<ProjectilePool2>
 {
-    public static ProjectilePool2 Instance { get; private set; }
-
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] int poolSize;
 
@@ -12,12 +10,9 @@ public class ProjectilePool2 : MonoBehaviour
 
 
 
-    void Awake()
+    protected override void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
+        base.Awake();
 
         CreatePool();
     }

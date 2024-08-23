@@ -5,9 +5,8 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class MeteorSpawner : MonoBehaviour
+public class MeteorSpawner : Singleton<MeteorSpawner>
 {
-    public static MeteorSpawner Instance { get; private set; }
     [SerializeField] List<MeteoorWaveSO> meteoorWaveList;
 
     int damage = 5;
@@ -20,17 +19,10 @@ public class MeteorSpawner : MonoBehaviour
 
     float meteorsSpawnerCooldown;
 
-    void Awake()
+    protected override void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            ResetWaveCooldown();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        base.Awake();
+        ResetWaveCooldown();
     }
 
     void OnEnable()
@@ -86,10 +78,10 @@ public class MeteorSpawner : MonoBehaviour
         foreach (Transform path in currentWave.pathList)
         {
             Transform[] waypoints = GetWaypointsInPath(path).ToArray();
-            GameObject instance = Instantiate(prefab, transform);
-            if (instance.GetComponent<Meteor>() != null)
+            GameObject meteor = Instantiate(prefab, transform);
+            if (meteor.GetComponent<Meteor>() != null)
             {
-                instance.GetComponent<Meteor>().Initialize(waypoints, currentWave.speed * speedMultiplier, damage);
+                meteor.GetComponent<Meteor>().Initialize(waypoints, currentWave.speed * speedMultiplier, damage);
                 yield return new WaitForSeconds(currentWave.timeBetweenSpawn);
             }
         }

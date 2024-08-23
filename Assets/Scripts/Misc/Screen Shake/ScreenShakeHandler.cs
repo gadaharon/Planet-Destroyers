@@ -2,10 +2,8 @@ using System.Collections;
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public class ScreenShakeHandler : MonoBehaviour
+public class ScreenShakeHandler : Singleton<ScreenShakeHandler>
 {
-    public static ScreenShakeHandler Instance { get; private set; }
-
     [SerializeField] bool start = false;
 
     float duration = 1f;
@@ -13,17 +11,10 @@ public class ScreenShakeHandler : MonoBehaviour
     ShakeSettingsSO shakeSettings;
 
 
-    void Awake()
+    protected override void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            startPosition = transform.position;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        base.Awake();
+        startPosition = transform.position;
     }
 
     void Update()

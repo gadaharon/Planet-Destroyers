@@ -12,7 +12,7 @@ public class ShooterManager : MonoBehaviour
 
     void ShootProjectile(Quaternion rotation, Vector3 position, Vector2 moveDirection, CombatData combatData)
     {
-        GameObject projectile = ProjectilePool2.Instance.GetProjectile();
+        GameObject projectile = ProjectilePool.Instance.GetProjectile();
         projectile.tag = $"Projectile_{gameObject.tag}";
         // projectile.tag = gameObject.tag;
         projectile.transform.position = position;
@@ -26,7 +26,7 @@ public class ShooterManager : MonoBehaviour
 
     void ShootProjectile(Quaternion rotation, CombatData combatData)
     {
-        GameObject projectile = ProjectilePool2.Instance.GetProjectile();
+        GameObject projectile = ProjectilePool.Instance.GetProjectile();
         projectile.tag = $"Projectile_{gameObject.tag}";
         // projectile.tag = gameObject.tag;
         projectile.transform.position = transform.position;

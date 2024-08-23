@@ -1,22 +1,14 @@
 using UnityEngine;
 
-public class PowerUpController : MonoBehaviour
+public class PowerUpController : Singleton<PowerUpController>
 {
-    public static PowerUpController Instance { get; private set; }
 
     Animator animator;
 
-    void Awake()
+    protected override void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            animator = GetComponent<Animator>();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        base.Awake();
+        animator = GetComponent<Animator>();
     }
 
     void OnEnable()

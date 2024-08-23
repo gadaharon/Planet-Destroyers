@@ -3,10 +3,9 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : Singleton<EnemySpawner>
 {
     public static Action<EnemySpawner> OnWaveChanged;
-    public static EnemySpawner Instance { get; private set; }
     public int CurrentWaveIndex => currentWaveIndex;
 
     [SerializeField] BoxCollider2D spawnAreaCollider;
@@ -22,17 +21,10 @@ public class EnemySpawner : MonoBehaviour
     Bounds bounds;
     Coroutine spawnEnemiesCoroutine;
 
-    void Awake()
+    protected override void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            bounds = spawnAreaCollider.bounds;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        base.Awake();
+        bounds = spawnAreaCollider.bounds;
     }
 
     void OnEnable()

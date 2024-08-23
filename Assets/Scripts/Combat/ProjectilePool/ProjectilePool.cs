@@ -1,75 +1,53 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectilePool : MonoBehaviour
+public class ProjectilePool : Singleton<ProjectilePool>
 {
-    public static ProjectilePool Instance { get; private set; }
+    [SerializeField] GameObject projectilePrefab;
+    [SerializeField] int poolSize;
 
-    [SerializeField] List<ProjectilePoolTypeSO> poolTypes = new List<ProjectilePoolTypeSO>();
-
-    Dictionary<string, GameObject[]> projectilePools = new Dictionary<string, GameObject[]>();
-    Dictionary<string, int> poolIndexes = new Dictionary<string, int>();
-
+    GameObject[] projectilePool;
+    int index = 0;
 
 
-    void Awake()
+
+    protected override void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
+        base.Awake();
 
-        CreatePoolsByType();
+        CreatePool();
     }
 
 
-    void CreatePoolsByType()
+    void CreatePool()
     {
-        foreach (ProjectilePoolTypeSO poolType in poolTypes)
+        projectilePool = new GameObject[poolSize];
+        for (int i = 0; i < poolSize; i++)
         {
-            GameObject[] projectilePool = new GameObject[poolType.poolSize];
-            for (int i = 0; i < poolType.poolSize; i++)
-            {
-                GameObject projectile = Instantiate(poolType.projectilePrefab, transform);
-                projectile.SetActive(false);
-                projectilePool[i] = projectile;
-            }
-
-            projectilePools.Add(poolType.projectileType, projectilePool);
-            poolIndexes.Add(poolType.projectileType, 0);
+            GameObject projectile = Instantiate(projectilePrefab, transform);
+            projectile.SetActive(false);
+            projectilePool[i] = projectile;
         }
     }
 
-    public GameObject GetProjectile(string projectileType)
+    public GameObject GetProjectile()
     {
-        if (projectilePools.ContainsKey(projectileType))
+        for (int i = 0; i < projectilePool.Length; i++)
         {
-            GameObject[] pool = projectilePools[projectileType];
-            int index = poolIndexes[projectileType];
-
-            for (int i = 0; i < pool.Length; i++)
+            int nextIndex = (index + i) % projectilePool.Length;
+            if (!projectilePool[nextIndex].activeInHierarchy)
             {
-                int nextIndex = (index + i) % pool.Length;
-                if (!pool[nextIndex].activeInHierarchy)
-                {
-                    poolIndexes[projectileType] = (nextIndex + 1) % pool.Length;
-                    pool[nextIndex].SetActive(true);
-                    return pool[nextIndex];
-                }
+                index = (nextIndex + 1) % projectilePool.Length;
+                projectilePool[nextIndex].SetActive(true);
+                return projectilePool[nextIndex];
             }
-
-            Debug.LogWarning("Projectile pool for type " + projectileType + " is empty! Consider increasing the pool size.");
         }
+
+        Debug.LogWarning("Every projectile in the pool is in use");
         return null;
     }
 
-    public void ReturnProjectile(GameObject projectile, string projectileType)
+    public void ReturnProjectile(GameObject projectile)
     {
         projectile.SetActive(false);
-        if (!projectilePools.ContainsKey(projectileType))
-        {
-            Debug.LogError("Projectile pool for type " + projectileType + " does not exist!");
-            Destroy(projectile);
-        }
     }
 }

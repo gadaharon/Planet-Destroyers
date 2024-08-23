@@ -2,9 +2,8 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDamagable
+public class PlayerController : Singleton<PlayerController>, IDamagable
 {
-    public static PlayerController Instance { get; private set; }
     public bool IsMoving => movement != Vector2.zero;
     public bool CanTakeDamage => canTakeDamage;
 
@@ -32,12 +31,9 @@ public class PlayerController : MonoBehaviour, IDamagable
 
 
 
-    void Awake()
+    protected override void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
+        base.Awake();
         controls = new PlayerControls();
         rb = GetComponent<Rigidbody2D>();
         playerCombat = GetComponent<PlayerCombat>();
