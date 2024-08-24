@@ -9,8 +9,12 @@ public class WaveSO : ScriptableObject
     public float spawnInterval;
     public int numberOfEnemiesPerSpawn;
 
-    public GameObject bossPrefab;
+    [Header("BOSS PROPERTIES")]
     public bool hasBoss;
-    public Vector2 bossSpawnPosition;
+    public GameObject bossPrefab;
+    [Tooltip("Where the boss instantiated")]
+    public Vector2 bossStartPosition;
+    [Tooltip("Boss entrance target position, where the boss move towards before start attacking")]
+    public Vector2 bossEndPosition;
 
 }

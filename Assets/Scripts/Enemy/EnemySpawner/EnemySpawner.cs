@@ -73,15 +73,17 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
     void SpawnBoss()
     {
-        GameObject boss = Instantiate(currentWave.bossPrefab, currentWave.bossSpawnPosition, Quaternion.identity, transform);
-        boss.GetComponent<BossHandler>().OnBossDefeated += OnBossDefeated;
-
-        if (currentWave.numberOfEnemiesInWave > 0)
+        GameObject boss = Instantiate(currentWave.bossPrefab, currentWave.bossStartPosition, Quaternion.identity, transform);
+        BossHandler bossHandler = boss.GetComponent<BossHandler>();
+        if (bossHandler != null)
         {
-            spawnEnemiesCoroutine = StartCoroutine(SpawnEnemies());
+            bossHandler.OnBossDefeated += OnBossDefeated;
+            bossHandler.OnBossCombatReady += OnBossCombatReady;
+            bossHandler.BossEnter(currentWave.bossEndPosition);
         }
-
     }
+
+
 
     IEnumerator SpawnEnemies()
     {
@@ -161,6 +163,14 @@ public class EnemySpawner : Singleton<EnemySpawner>
     public void RemoveEnemyFromWave()
     {
         numberOfEnemies--;
+    }
+
+    void OnBossCombatReady()
+    {
+        if (currentWave.numberOfEnemiesInWave > 0)
+        {
+            spawnEnemiesCoroutine = StartCoroutine(SpawnEnemies());
+        }
     }
 
     void OnBossDefeated()

@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class BossHandler : EnemyBase
 {
     public Action OnBossDefeated;
+    public Action OnBossCombatReady;
 
     [SerializeField] float combatDataChangeCooldown = 30f;
     [SerializeField] CombatData defaultAttackData;
@@ -17,7 +18,10 @@ public class BossHandler : EnemyBase
     Bounds bounds;
     Health health;
     ShooterManager shooterManager;
+
     Vector3 targetPosition;
+
+    bool bossReady = false;
 
     bool isSpecialAttackActive = false;
 
@@ -48,12 +52,34 @@ public class BossHandler : EnemyBase
     void Start()
     {
         bounds = GameManager.GetCameraBounds();
-        targetPosition = transform.position;
         currentCombatData = defaultAttackData;
+    }
+
+    public void BossEnter(Vector3 endPosition)
+    {
+        StartCoroutine(BossEnterRoutine(endPosition));
+    }
+
+    IEnumerator BossEnterRoutine(Vector3 endPosition)
+    {
+        while (transform.position != endPosition)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, endPosition, Time.deltaTime * movementSpeed);
+
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        targetPosition = transform.position;
+        OnBossCombatReady?.Invoke();
+        bossReady = true;
     }
 
     public override void HandleDamage()
     {
+        if (!bossReady) { return; }
+
         // Boss attacks goes here
         if (Time.time > lastTimeShoot + currentCombatData.fireRate)
         {
@@ -90,6 +116,8 @@ public class BossHandler : EnemyBase
 
     public override void Move()
     {
+        if (!bossReady) { return; }
+
         // Boss movement goes here
         if (transform.position == targetPosition)// reach destination
         {
@@ -100,6 +128,8 @@ public class BossHandler : EnemyBase
 
     public override void TakeDamage(int damage)
     {
+        if (!bossReady) { return; }
+
         health.TakeDamage(damage);
     }
 

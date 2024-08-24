@@ -19,6 +19,7 @@ MonoBehaviour:
   - {fileID: 5189925275518449177, guid: 0fd0446ad731cc545b008433ed37444f, type: 3}
   spawnInterval: 7
   numberOfEnemiesPerSpawn: 2
-  bossPrefab: {fileID: 1766524352385845643, guid: 785ffc2c54ddd124f8e3359705acfc64, type: 3}
   hasBoss: 1
-  bossSpawnPosition: {x: 0, y: 12}
+  bossPrefab: {fileID: 1766524352385845643, guid: 785ffc2c54ddd124f8e3359705acfc64, type: 3}
+  bossStartPosition: {x: 20, y: 33}
+  bossEndPosition: {x: 0, y: 12}
