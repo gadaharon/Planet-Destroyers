@@ -66,6 +66,7 @@ public class EnemySpawner : Singleton<EnemySpawner>
         {
             // All waves completed
             Debug.Log("All waves completed!");
+            TimelineManager.Instance.PlayCutscene();
             StopSpawnEnemiesCoroutine();
         }
 
@@ -170,11 +171,16 @@ public class EnemySpawner : Singleton<EnemySpawner>
         if (currentWave.numberOfEnemiesInWave > 0)
         {
             spawnEnemiesCoroutine = StartCoroutine(SpawnEnemies());
+
         }
     }
 
     void OnBossDefeated()
     {
+        foreach (Transform enemy in transform)
+        {
+            Destroy(enemy.gameObject);
+        }
         currentWaveIndex++;
         StartNextWave();
     }
