@@ -8,6 +8,10 @@ public class TimelineManager : Singleton<TimelineManager>
     [SerializeField] SpriteRenderer planet2SR;
     [SerializeField] SpriteRenderer planet3SR;
 
+    [Header("SPEED PARAMETERS")]
+    [SerializeField] ParticleSystem speedVFX;
+    [SerializeField] ShakeSettingsSO speedScreenShakeSettings;
+
     PlayableDirector playableDirector;
 
     protected override void Awake()
@@ -26,5 +30,12 @@ public class TimelineManager : Singleton<TimelineManager>
         planet1SR.sprite = GameResources.Instance.Planet_2_1;
         planet2SR.sprite = GameResources.Instance.Planet_2_2;
         planet3SR.sprite = GameResources.Instance.Planet_2_3;
+    }
+
+    public void StartSpeedAnimation()
+    {
+        speedVFX.Play();
+        ScreenShakeHandler.Instance.ShakeCamera(speedScreenShakeSettings);
+        // TODO - Add player ship boost : fire VFX - need to create one and apply to player
     }
 }

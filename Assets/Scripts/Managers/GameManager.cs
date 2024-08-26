@@ -1,17 +1,36 @@
 using UnityEngine;
 
+public enum GameState
+{
+    GameStarted,
+    CharacterSelection,
+    Playing,
+    Cutscene,
+    Pause,
+    GameOver
+}
+
 public class GameManager : MonoBehaviour
 {
     public static Camera gameCamera;
+
+    GameState gameState;
+
+
 
     void Awake()
     {
         gameCamera = Camera.main;
     }
 
+    // TODO - set gameState and enable/disable game actions according to state
+    public void SetGameState(GameState newState)
+    {
+        gameState = newState;
+    }
+
     public static Bounds GetCameraBounds()
     {
-
         if (!gameCamera.orthographic)
         {
             Debug.Log($"The camera {gameCamera.name} must be orthographic!");
