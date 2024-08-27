@@ -1,22 +1,10 @@
 using UnityEngine;
 
-public enum GameState
-{
-    GameStarted,
-    CharacterSelection,
-    Playing,
-    Cutscene,
-    Pause,
-    GameOver
-}
-
 public class GameManager : MonoBehaviour
 {
     public static Camera gameCamera;
 
     GameState gameState;
-
-
 
     void Awake()
     {

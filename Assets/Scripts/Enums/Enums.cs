@@ -1,4 +1,14 @@
 
+public enum GameState
+{
+    GameStarted,
+    CharacterSelection,
+    Playing,
+    Cutscene,
+    Pause,
+    GameOver
+}
+
 public enum ShootingPattern
 {
     SingleShot,
