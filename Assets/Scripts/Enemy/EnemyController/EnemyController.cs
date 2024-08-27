@@ -10,7 +10,6 @@ public class EnemyController : MonoBehaviour, IDamagable
 
     Transform player;
 
-    // Knockback knockback;
     EnemyBase enemyBase;
     bool isFacingRight = false;
 

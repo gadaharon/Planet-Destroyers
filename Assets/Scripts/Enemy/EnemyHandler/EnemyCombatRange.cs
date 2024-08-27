@@ -8,6 +8,7 @@ public class EnemyCombatRange : EnemyBase
     [SerializeField] float closestPlayerPoint = 3f;
     [SerializeField] CombatData combatData;
 
+    Flash flash;
     ShooterManager shooterManager;
     Health health;
     Bounds bounds;
@@ -18,6 +19,7 @@ public class EnemyCombatRange : EnemyBase
     {
         shooterManager = GetComponent<ShooterManager>();
         health = GetComponent<Health>();
+        flash = GetComponent<Flash>();
     }
 
     void OnEnable()
@@ -37,6 +39,7 @@ public class EnemyCombatRange : EnemyBase
 
     public override void TakeDamage(int damage)
     {
+        flash.StartFlash();
         health.TakeDamage(damage);
     }
 

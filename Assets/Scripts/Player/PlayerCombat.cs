@@ -11,7 +11,7 @@ public class PlayerCombat : MonoBehaviour
     [Tooltip("Determines the screen shake when player takes damage")]
     [SerializeField] ShakeSettingsSO takeDamageShakeDetails;
 
-
+    Flash flash;
     ShooterManager shooterManager;
     Health health;
     Shield playerShield;
@@ -28,6 +28,7 @@ public class PlayerCombat : MonoBehaviour
         shooterManager = GetComponent<ShooterManager>();
         health = GetComponent<Health>();
         playerShield = GetComponent<Shield>();
+        flash = GetComponent<Flash>();
     }
 
     void Start()
@@ -89,6 +90,7 @@ public class PlayerCombat : MonoBehaviour
             }
             else
             {
+                flash.StartFlash();
                 health.TakeDamage(damage);
                 ScreenShakeHandler.Instance.ShakeCamera(takeDamageShakeDetails);
                 UIManager.Instance.UpdatePlayerHealthSliderValue(health.CurrentHealth);

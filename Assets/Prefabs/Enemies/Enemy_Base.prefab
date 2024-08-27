@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 9007145718517685028}
   - component: {fileID: 8996866820613184112}
   - component: {fileID: 8894449509428677577}
+  - component: {fileID: 7441982736334698040}
   m_Layer: 7
   m_Name: Enemy_Base
   m_TagString: Enemy
@@ -132,6 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75c4f9727a178341991b9dee5d1deaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lookAtPlayer: 1
+  sprite: {fileID: 0}
 --- !u!114 &9007145718517685028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,3 +211,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &7441982736334698040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6238687201382723256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62c36cf54f1e023469c666e5935b3c1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  flashMaterial: {fileID: 2100000, guid: e7ff037916aa3dc41b21ff493475a3e9, type: 2}
+  flashTime: 0.1
+  spriteRenderer: {fileID: 0}

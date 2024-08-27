@@ -129,7 +129,6 @@ public class BossHandler : EnemyBase
     public override void TakeDamage(int damage)
     {
         if (!bossReady) { return; }
-
         health.TakeDamage(damage);
     }
 

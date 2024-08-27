@@ -4922,6 +4922,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Boss_1
       objectReference: {fileID: 0}
+    - target: {fileID: 7441982736334698040, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 1989940355198226655}
     - target: {fileID: 8996866820613184112, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
       propertyPath: m_Radius
       value: 0.98
@@ -4932,6 +4936,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8996866820613184112, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+    - {fileID: 7441982736334698040, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1034503040340131503, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
@@ -5035,6 +5040,11 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.2}
   m_Size: {x: 3, y: 1}
   m_Direction: 1
+--- !u!212 &1989940355198226655 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6163739353072170988, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+  m_PrefabInstance: {fileID: 5627160311820216115}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4633354600457476508 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1034503040340131503, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
