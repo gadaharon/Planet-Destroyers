@@ -34,7 +34,7 @@ public class EnemyCombatRange : EnemyBase
 
     void Start()
     {
-        bounds = GameManager.GetCameraBounds();
+        bounds = GameManager.Instance.GetCameraBounds();
     }
 
     public override void TakeDamage(int damage)

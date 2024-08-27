@@ -39,6 +39,12 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
     void Start()
     {
+        StartNextLevel();
+    }
+
+    public void StartNextLevel()
+    {
+        currentWaveIndex = 0;
         currentWave = level.waveList[currentWaveIndex];
         numberOfEnemies = currentWave.numberOfEnemiesInWave;
         StartNextWave();
@@ -69,7 +75,6 @@ public class EnemySpawner : Singleton<EnemySpawner>
             TimelineManager.Instance.PlayCutscene();
             StopSpawnEnemiesCoroutine();
         }
-
     }
 
     void SpawnBoss()

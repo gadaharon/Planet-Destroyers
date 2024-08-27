@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -21,7 +19,7 @@ public class Projectile : MonoBehaviour
 
     void Start()
     {
-        bounds = GameManager.GetCameraBounds();
+        bounds = GameManager.Instance.GetCameraBounds();
     }
 
     void Update()

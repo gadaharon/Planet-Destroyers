@@ -22,6 +22,7 @@ public class TimelineManager : Singleton<TimelineManager>
 
     public void PlayCutscene()
     {
+        GameManager.Instance.SetGameState(GameState.Cutscene);
         playableDirector.Play();
     }
 
@@ -37,5 +38,11 @@ public class TimelineManager : Singleton<TimelineManager>
         speedVFX.Play();
         ScreenShakeHandler.Instance.ShakeCamera(speedScreenShakeSettings);
         // TODO - Add player ship boost : fire VFX - need to create one and apply to player
+    }
+
+    public void EndCutsceneHandler()
+    {
+        GameManager.Instance.SetGameState(GameState.Playing);
+        EnemySpawner.Instance.StartNextLevel();
     }
 }

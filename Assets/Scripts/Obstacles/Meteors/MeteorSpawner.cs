@@ -41,6 +41,8 @@ public class MeteorSpawner : Singleton<MeteorSpawner>
         // {
         //     SpawnMeteorWave();
         // }
+        if (GameManager.Instance.CurrentGameState != GameState.Playing) { return; }
+
         SpawnByTimer();
     }
 

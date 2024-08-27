@@ -51,7 +51,7 @@ public class BossHandler : EnemyBase
 
     void Start()
     {
-        bounds = GameManager.GetCameraBounds();
+        bounds = GameManager.Instance.GetCameraBounds();
         currentCombatData = defaultAttackData;
     }
 

@@ -1,23 +1,31 @@
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public static Camera gameCamera;
+    public GameState CurrentGameState => currentGameState;
+    public Camera gameCamera { get; private set; }
 
-    GameState gameState;
+    GameState currentGameState;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         gameCamera = Camera.main;
+    }
+
+    void Start()
+    {
+        // Default gameState should be GameStarted, Change it after implement MainMenu
+        SetGameState(GameState.Playing);
     }
 
     // TODO - set gameState and enable/disable game actions according to state
     public void SetGameState(GameState newState)
     {
-        gameState = newState;
+        currentGameState = newState;
     }
 
-    public static Bounds GetCameraBounds()
+    public Bounds GetCameraBounds()
     {
         if (!gameCamera.orthographic)
         {

@@ -43,7 +43,7 @@ public class PlayerController : Singleton<PlayerController>, IDamagable
 
     void Start()
     {
-        bounds = GameManager.GetCameraBounds();
+        bounds = GameManager.Instance.GetCameraBounds();
     }
 
     void OnEnable()
@@ -60,6 +60,8 @@ public class PlayerController : Singleton<PlayerController>, IDamagable
 
     void Update()
     {
+        if (GameManager.Instance.CurrentGameState != GameState.Playing) { return; }
+
         PlayerInput();
         RotatePlayer();
         Fire();
