@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [Tooltip("Populate here the particle system for the projectile hit VFX")]
+    [SerializeField] ParticleSystem projectileHitVFXPrefab;
+
     float speed = 0f;
     Vector2 moveDirection = Vector2.zero;
     int damage;
+    ProjectileSettings projectileSettings;
 
     float defaultProjectileSize = 1f;
 
-
+    ParticleSystem hitVFX;
     Bounds bounds;
     Transform t;
 
@@ -28,12 +32,14 @@ public class Projectile : MonoBehaviour
         Move();
     }
 
-    public void Init(Vector2 moveDirection, float speed, int damage, float size)
+    public void Init(Vector2 moveDirection, ProjectileSettings projectileSettings)
     {
         this.moveDirection = moveDirection;
-        this.speed = speed;
-        this.damage = damage;
-        SetProjectileSize(size);
+        this.projectileSettings = projectileSettings;
+        speed = projectileSettings.projectileSpeed;
+        damage = projectileSettings.damage;
+        SetProjectileSize(projectileSettings.projectileSize);
+        SetProjectileColor(projectileSettings.projectileColor);
     }
 
     void Move()
@@ -54,13 +60,29 @@ public class Projectile : MonoBehaviour
         // if I not hitting my self
         if (other.gameObject.GetComponent<IDamagable>() != null && !IsHittingSelf(other.gameObject.tag, gameObject.tag))
         {
-            other.gameObject.GetComponent<IDamagable>().TakeDamage(gameObject.tag, 10);
+            InitHitVFX();
+            other.gameObject.GetComponent<IDamagable>().TakeDamage(gameObject.tag, damage);
             ReleaseProjectile();
         }
         else if (!IsHittingSelf(other.gameObject.tag, gameObject.tag) && !other.CompareTag("Untagged"))
         {
+            InitHitVFX();
             ReleaseProjectile();
         }
+    }
+
+    void InitHitVFX()
+    {
+        hitVFX = Instantiate(projectileHitVFXPrefab, t.position, t.rotation);
+        var main = hitVFX.main;
+        main.startSizeMultiplier = projectileSettings.projectileSize * main.startSize.constant;
+        hitVFX.gameObject.GetComponent<ParticleSystemRenderer>().material = projectileSettings.projectileColor;
+        hitVFX.Play();
+    }
+
+    void SetProjectileColor(Material material)
+    {
+        gameObject.GetComponent<SpriteRenderer>().material = material;
     }
 
     void SetProjectileSize(float size)

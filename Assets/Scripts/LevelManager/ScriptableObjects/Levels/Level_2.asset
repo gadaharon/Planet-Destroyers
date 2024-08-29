@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Level_2
   m_EditorClassIdentifier: 
   waveList:
-  - {fileID: 11400000, guid: 2ea90784f07912b499f6ff7f21700ac0, type: 2}
+  - {fileID: 11400000, guid: fa5deba44aefba241a5c1f0731bef937, type: 2}
+  - {fileID: 11400000, guid: 640e871197307df4db9881a5d861caba, type: 2}
+  - {fileID: 11400000, guid: 5b508363e8ab5e24089e38be0faaef7b, type: 2}

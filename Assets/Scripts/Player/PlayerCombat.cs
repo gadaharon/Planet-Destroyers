@@ -6,10 +6,11 @@ public class PlayerCombat : MonoBehaviour
 {
     public bool CanFireSpecialAttack => currentSpecialAttackValue == specialAttackTargetValue;
 
-    [SerializeField] CombatData combatData;
-
     [Tooltip("Determines the screen shake when player takes damage")]
     [SerializeField] ShakeSettingsSO takeDamageShakeDetails;
+
+    [SerializeField] CombatData combatData;
+
 
     Flash flash;
     ShooterManager shooterManager;

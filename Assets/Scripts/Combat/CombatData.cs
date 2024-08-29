@@ -13,10 +13,16 @@ public class CombatData
     public ShootingPattern shootingPattern;
     public int numberOfProjectiles;
     public float fireRate;
-    public float projectileSpeed;
     public float projectileAngleSpread = 2;
-    public float projectileSize = 1;
     public ShootDirection shootDirection = ShootDirection.Up;
+    public ProjectileSettings projectileSettings;
+}
+
+[Serializable]
+public class ProjectileSettings
+{
+    public float projectileSpeed;
+    public float projectileSize = 1;
     public int damage;
     public Material projectileColor;
 }

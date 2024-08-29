@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a9a40cba92b8c45805a53f46a5e582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileHitVFXPrefab: {fileID: 7253048728151264424, guid: 9767805f97ac698448e03131f8aa820e, type: 3}
 --- !u!50 &-6594571305805012562
 Rigidbody2D:
   serializedVersion: 4

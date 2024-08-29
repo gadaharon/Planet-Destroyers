@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,14 +10,16 @@ public class EnemySpawner : Singleton<EnemySpawner>
     public int CurrentWaveIndex => currentWaveIndex;
 
     [SerializeField] BoxCollider2D spawnAreaCollider;
-    [SerializeField] LevelSO level;
+    [SerializeField] List<LevelSO> levelList;
 
+    LevelSO currentLevel;
     WaveSO currentWave;
 
     //For test
     [Header("FOR TESTING")]
     [SerializeField] int numberOfEnemies = 0;
     int currentWaveIndex = 0;
+    int currentLevelIndex = 0;
 
     Bounds bounds;
     Coroutine spawnEnemiesCoroutine;
@@ -39,23 +42,24 @@ public class EnemySpawner : Singleton<EnemySpawner>
 
     void Start()
     {
-        StartNextLevel();
+        SetLevel();
     }
 
-    public void StartNextLevel()
+    public void SetLevel()
     {
         currentWaveIndex = 0;
-        currentWave = level.waveList[currentWaveIndex];
+        currentLevel = levelList[currentLevelIndex];
+        currentWave = currentLevel.waveList[currentWaveIndex];
         numberOfEnemies = currentWave.numberOfEnemiesInWave;
         StartNextWave();
     }
 
     void StartNextWave()
     {
-        if (currentWaveIndex < level.waveList.Count)
+        if (currentWaveIndex < currentLevel.waveList.Count)
         {
             StopSpawnEnemiesCoroutine();
-            currentWave = level.waveList[currentWaveIndex];
+            currentWave = currentLevel.waveList[currentWaveIndex];
             numberOfEnemies = currentWave.numberOfEnemiesInWave;
             OnWaveChanged?.Invoke(this);
 
@@ -72,8 +76,17 @@ public class EnemySpawner : Singleton<EnemySpawner>
         {
             // All waves completed
             Debug.Log("All waves completed!");
-            TimelineManager.Instance.PlayCutscene();
             StopSpawnEnemiesCoroutine();
+            currentLevelIndex++;
+            if (currentLevelIndex >= levelList.Count)
+            {
+                Debug.Log("ALL LEVELS COMPLETED");
+                // Play end cutscene
+            }
+            else
+            {
+                TimelineManager.Instance.PlayCutscene();
+            }
         }
     }
 

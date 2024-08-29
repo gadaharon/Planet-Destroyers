@@ -20,8 +20,8 @@ public class ShooterManager : MonoBehaviour
 
         moveDirection = moveDirection * (int)combatData.shootDirection;
 
-        projectile.GetComponent<SpriteRenderer>().material = combatData.projectileColor;
-        projectile.GetComponent<Projectile>().Init(moveDirection, combatData.projectileSpeed, combatData.damage, combatData.projectileSize);
+        // projectile.GetComponent<SpriteRenderer>().material = combatData.projectileColor;
+        projectile.GetComponent<Projectile>().Init(moveDirection, combatData.projectileSettings);
     }
 
     void ShootProjectile(Quaternion rotation, CombatData combatData)
@@ -34,8 +34,8 @@ public class ShooterManager : MonoBehaviour
 
         Vector2 moveDirection = Vector2.up * (int)combatData.shootDirection;
 
-        projectile.GetComponent<SpriteRenderer>().material = combatData.projectileColor;
-        projectile.GetComponent<Projectile>().Init(moveDirection, combatData.projectileSpeed, combatData.damage, combatData.projectileSize);
+        // projectile.GetComponent<SpriteRenderer>().material = combatData.projectileColor;
+        projectile.GetComponent<Projectile>().Init(moveDirection, combatData.projectileSettings);
     }
 
     void ShootProjectileSpread(CombatData combatData)

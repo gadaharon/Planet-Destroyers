@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,16 +24,6 @@ public class MeteorSpawner : Singleton<MeteorSpawner>
         ResetWaveCooldown();
     }
 
-    void OnEnable()
-    {
-        EnemySpawner.OnWaveChanged += OnEnemyWaveChangedHandler;
-    }
-
-    void OnDisable()
-    {
-        EnemySpawner.OnWaveChanged -= OnEnemyWaveChangedHandler;
-    }
-
     void Update()
     {
         // if (Input.GetKeyDown(KeyCode.N))
@@ -44,14 +33,6 @@ public class MeteorSpawner : Singleton<MeteorSpawner>
         if (GameManager.Instance.CurrentGameState != GameState.Playing) { return; }
 
         SpawnByTimer();
-    }
-
-    void OnEnemyWaveChangedHandler(EnemySpawner spawner)
-    {
-        if (!isWaveActive && spawner.CurrentWaveIndex > 0)
-        {
-            SpawnMeteorWave();
-        }
     }
 
     void SpawnByTimer()

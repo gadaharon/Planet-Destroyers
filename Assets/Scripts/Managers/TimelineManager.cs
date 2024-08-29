@@ -43,6 +43,6 @@ public class TimelineManager : Singleton<TimelineManager>
     public void EndCutsceneHandler()
     {
         GameManager.Instance.SetGameState(GameState.Playing);
-        EnemySpawner.Instance.StartNextLevel();
+        EnemySpawner.Instance.SetLevel();
     }
 }

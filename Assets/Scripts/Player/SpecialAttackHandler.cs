@@ -21,16 +21,6 @@ public class SpecialAttackHandler : MonoBehaviour
         return null;
     }
 
-    void Update()
-    {
-        // TODO - FOR TESTING - BE SURE TO REMOVE!
-        // if (Input.GetKeyDown(KeyCode.L))
-        // {
-        //     SpecialAttackSO laserAttack = specialAttackList[0];
-        //     ShootLaserCanons(laserAttack);
-        // }
-    }
-
 
     GameObject ShootLaserCanons(SpecialAttackSO laserAttack)
     {

@@ -15,7 +15,7 @@ public class Missile : MonoBehaviour
 
     float speed = 25f;
     float rotateSpeed = 400f;
-    int damage = 15;
+    int damage = 20;
 
     float hitThreshold = 3f;
     float hitThresholdSpeed = 2f;

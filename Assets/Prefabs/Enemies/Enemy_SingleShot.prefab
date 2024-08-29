@@ -126,6 +126,11 @@ MonoBehaviour:
     shootDirection: 1
     damage: 10
     projectileColor: {fileID: 2100000, guid: 9c44ea0b635c0dc4bbe59d7f83c4fc2d, type: 2}
+    projectileSettings:
+      projectileSpeed: 25
+      projectileSize: 1
+      damage: 10
+      projectileColor: {fileID: 2100000, guid: 9c44ea0b635c0dc4bbe59d7f83c4fc2d, type: 2}
 --- !u!212 &7964199157172792036 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6163739353072170988, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}

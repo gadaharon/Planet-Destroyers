@@ -4983,6 +4983,11 @@ MonoBehaviour:
     shootDirection: -1
     damage: 10
     projectileColor: {fileID: 2100000, guid: 765648bdcf50bc04a83c49db09f06bde, type: 2}
+    projectileSettings:
+      projectileSpeed: 30
+      projectileSize: 3
+      damage: 10
+      projectileColor: {fileID: 2100000, guid: 765648bdcf50bc04a83c49db09f06bde, type: 2}
   specialAttackData:
     shootingPattern: 3
     numberOfProjectiles: 10
@@ -4991,8 +4996,13 @@ MonoBehaviour:
     projectileAngleSpread: 2
     projectileSize: 3
     shootDirection: 1
-    damage: 10
+    damage: 15
     projectileColor: {fileID: 2100000, guid: 967ec79ad47c4db4ca1170c461e2885a, type: 2}
+    projectileSettings:
+      projectileSpeed: 30
+      projectileSize: 3
+      damage: 15
+      projectileColor: {fileID: 2100000, guid: 967ec79ad47c4db4ca1170c461e2885a, type: 2}
 --- !u!114 &7270840447911643182
 MonoBehaviour:
   m_ObjectHideFlags: 0

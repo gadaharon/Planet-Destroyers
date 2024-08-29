@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9bf2fbb2209f06b49a4bceb97c158a40, type: 3}
-  m_Name: Wave_1
+  m_Name: Wave_7
   m_EditorClassIdentifier: 
-  numberOfEnemiesInWave: 10
+  numberOfEnemiesInWave: 60
   enemyPrefabList:
+  - {fileID: 5189925275518449177, guid: 0fd0446ad731cc545b008433ed37444f, type: 3}
+  - {fileID: 5885966413412505954, guid: ff5a0dd4391b80b49b6c4163cd0d09c2, type: 3}
   - {fileID: 7897273412387140528, guid: 042b60305c9d8b440afe24707dca1067, type: 3}
-  spawnInterval: 4
-  numberOfEnemiesPerSpawn: 1
+  spawnInterval: 8
+  numberOfEnemiesPerSpawn: 5
   hasBoss: 0
   bossPrefab: {fileID: 0}
   bossStartPosition: {x: 0, y: 0}
