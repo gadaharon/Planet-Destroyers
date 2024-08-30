@@ -42,7 +42,7 @@ public class PowerUpController : Singleton<PowerUpController>
                 PlayerController.Instance.AddBulletSpread();
                 break;
             case "PowerUp_Health":
-                PlayerController.Instance.AddHealth();
+                PlayerController.Instance.ResetHealth();
                 break;
             case "PowerUp_Shield":
                 PlayerController.Instance.ActivateShield();

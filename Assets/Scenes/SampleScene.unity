@@ -14930,6 +14930,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7710721701748542015, guid: 64cfde8b70135064f98bcd5c5d7ac4d5, type: 3}
+      propertyPath: maxHealth
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 8495893778198427379, guid: 64cfde8b70135064f98bcd5c5d7ac4d5, type: 3}
       propertyPath: dashCooldown
       value: 0.5

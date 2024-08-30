@@ -190,6 +190,11 @@ public class PlayerController : Singleton<PlayerController>, IDamagable
         playerCombat.AddHealth();
     }
 
+    public void ResetHealth()
+    {
+        playerCombat.ResetHealth();
+    }
+
     public void IncreaseSpecialAttackBar()
     {
         playerCombat.IncreaseSpecialAttackBar();

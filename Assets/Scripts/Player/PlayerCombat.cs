@@ -80,6 +80,12 @@ public class PlayerCombat : MonoBehaviour
         health.AddHealth(15);
     }
 
+    public void ResetHealth()
+    {
+        health.ResetHealth();
+        UIManager.Instance.UpdatePlayerHealthSliderValue(health.CurrentHealth);
+    }
+
     public void TakeDamage(string damageDealerTag, int damage, bool canTakeDamage)
     {
         // if (damageDealerTag != "Player" && canTakeDamage)
