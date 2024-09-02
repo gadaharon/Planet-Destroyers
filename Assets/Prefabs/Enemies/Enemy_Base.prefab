@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 8996866820613184112}
   - component: {fileID: 8894449509428677577}
   - component: {fileID: 7441982736334698040}
+  - component: {fileID: -7143781106789299560}
   m_Layer: 7
   m_Name: Enemy_Base
   m_TagString: Enemy
@@ -227,3 +228,15 @@ MonoBehaviour:
   flashMaterial: {fileID: 2100000, guid: e7ff037916aa3dc41b21ff493475a3e9, type: 2}
   flashTime: 0.1
   spriteRenderer: {fileID: 0}
+--- !u!114 &-7143781106789299560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6238687201382723256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e5903d57867564d8347da06067ae4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

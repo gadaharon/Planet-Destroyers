@@ -12,6 +12,7 @@ public class EnemyCombatRange : EnemyBase
     ShooterManager shooterManager;
     Health health;
     Bounds bounds;
+    LootBag lootBag;
 
     float lastTimeShoot = 0;
 
@@ -20,6 +21,7 @@ public class EnemyCombatRange : EnemyBase
         shooterManager = GetComponent<ShooterManager>();
         health = GetComponent<Health>();
         flash = GetComponent<Flash>();
+        lootBag = GetComponent<LootBag>();
     }
 
     void OnEnable()
@@ -76,6 +78,7 @@ public class EnemyCombatRange : EnemyBase
 
     void Die()
     {
+        lootBag.InstantiateLoot(transform.position);
         EnemyController.OnEnemyDeath?.Invoke();
         Destroy(gameObject);
     }

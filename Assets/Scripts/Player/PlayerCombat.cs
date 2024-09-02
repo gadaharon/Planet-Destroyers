@@ -75,9 +75,10 @@ public class PlayerCombat : MonoBehaviour
         combatData.shootingPattern = shootingPattern;
     }
 
-    public void AddHealth()
+    public void AddHealth(int amount)
     {
-        health.AddHealth(15);
+        health.AddHealth(amount);
+        UIManager.Instance.UpdatePlayerHealthSliderValue(health.CurrentHealth);
     }
 
     public void ResetHealth()

@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 112077165232474630}
   - component: {fileID: 1450810314699753757}
   - component: {fileID: 1437208673720945685}
+  - component: {fileID: 2502286850469847105}
   - component: {fileID: 2586277029201843251}
   - component: {fileID: 9015055581710627704}
   - component: {fileID: 4954504207073293224}
@@ -143,7 +144,7 @@ MonoBehaviour:
   movementSpeed: 15
   dashThrust: 30
   dashTime: 0.3
-  dashCooldown: 0.3
+  dashCooldown: 0.5
 --- !u!50 &1876701472211033790
 Rigidbody2D:
   serializedVersion: 4
@@ -195,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84ae145d9ba7bc41bba4b5e818fd2d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
+  maxHealth: 200
   currentHealth: 0
 --- !u!114 &2831833195993917186
 MonoBehaviour:
@@ -209,22 +210,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8598ceed31d244840bb145daa36f88bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  takeDamageShakeDetails: {fileID: 11400000, guid: 895878f7e05402b41bf1b0872780d50d, type: 2}
   combatData:
     shootingPattern: 0
     numberOfProjectiles: 1
     fireRate: 0.2
-    projectileSpeed: 30
-    projectileAngleSpread: 2
-    projectileSize: 1
+    projectileAngleSpread: 3
     shootDirection: 1
-    damage: 10
-    projectileColor: {fileID: 2100000, guid: 74f9dbcb48d7a8045b2017b8502d45e0, type: 2}
     projectileSettings:
       projectileSpeed: 30
       projectileSize: 1
       damage: 10
       projectileColor: {fileID: 2100000, guid: 74f9dbcb48d7a8045b2017b8502d45e0, type: 2}
-  takeDamageShakeDetails: {fileID: 11400000, guid: 895878f7e05402b41bf1b0872780d50d, type: 2}
 --- !u!114 &112077165232474630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specialAttackList:
-  - {fileID: 11400000, guid: ae90a1cdf3939c0498d8914cb7598f78, type: 2}
+  - {fileID: 11400000, guid: 5d7edf9b238d1ae4fbde4e54af4084e1, type: 2}
 --- !u!114 &1437208673720945685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +267,18 @@ MonoBehaviour:
   flashMaterial: {fileID: 2100000, guid: 375079c8ea3da354e83cc6ba9a78bee7, type: 2}
   flashTime: 0.1
   spriteRenderer: {fileID: 3897809745159733162}
+--- !u!114 &2502286850469847105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116526368994307474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cec629f0affec154c816333ecc888891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &2586277029201843251
 CircleCollider2D:
   m_ObjectHideFlags: 0

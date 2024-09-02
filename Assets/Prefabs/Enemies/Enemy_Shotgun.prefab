@@ -8,6 +8,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7143781106789299560, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+      propertyPath: lootList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7143781106789299560, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+      propertyPath: lootList.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 1377924781047025164, guid: 8782d80c96039424ba93d018d06da884, type: 3}
+    - target: {fileID: -7143781106789299560, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+      propertyPath: lootList.Array.data[0].dropRate
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: -7143781106789299560, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+      propertyPath: lootList.Array.data[0].lootName
+      value: Health
+      objectReference: {fileID: 0}
     - target: {fileID: 962580726374939603, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -194,12 +210,8 @@ MonoBehaviour:
     shootingPattern: 1
     numberOfProjectiles: 4
     fireRate: 1.2
-    projectileSpeed: 25
     projectileAngleSpread: 2
-    projectileSize: 2
     shootDirection: 1
-    damage: 10
-    projectileColor: {fileID: 2100000, guid: 765648bdcf50bc04a83c49db09f06bde, type: 2}
     projectileSettings:
       projectileSpeed: 25
       projectileSize: 2

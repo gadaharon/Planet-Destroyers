@@ -185,9 +185,9 @@ public class PlayerController : Singleton<PlayerController>, IDamagable
         playerShield.ActivateShield();
     }
 
-    public void AddHealth()
+    public void AddHealth(int amount)
     {
-        playerCombat.AddHealth();
+        playerCombat.AddHealth(amount);
     }
 
     public void ResetHealth()

@@ -8,6 +8,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7143781106789299560, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+      propertyPath: lootList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7143781106789299560, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+      propertyPath: lootList.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 1377924781047025164, guid: 8782d80c96039424ba93d018d06da884, type: 3}
+    - target: {fileID: -7143781106789299560, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+      propertyPath: lootList.Array.data[0].dropRate
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -7143781106789299560, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+      propertyPath: lootList.Array.data[0].lootName
+      value: Health
+      objectReference: {fileID: 0}
     - target: {fileID: 1034503040340131503, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -49,20 +65,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5354707865483824433, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 3915671746304190171}
+    - target: {fileID: 5354707865483824433, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
       propertyPath: shootingPattern
       value: 
       objectReference: {fileID: 11400000, guid: 37e2894e87f8aeb498e68f5ad880fc9b, type: 2}
     - target: {fileID: 6163739353072170988, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1006670501, guid: 0207814b552a75b4bbdeceee7675d1fe, type: 3}
+    - target: {fileID: 6163739353072170988, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
       propertyPath: m_Color.b
-      value: 0.39640442
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6163739353072170988, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
       propertyPath: m_Color.g
-      value: 0.6415094
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6163739353072170988, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
       propertyPath: m_Color.r
-      value: 0.44174576
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6238687201382723256, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
       propertyPath: m_Name
@@ -72,6 +96,10 @@ PrefabInstance:
       propertyPath: spriteRenderer
       value: 
       objectReference: {fileID: 7964199157172792036}
+    - target: {fileID: 8996866820613184112, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+      propertyPath: m_Radius
+      value: 0.87
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -82,7 +110,41 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6238687201382723256, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
       insertIndex: -1
       addedObject: {fileID: -7699914919290741853}
+    - targetCorrespondingSourceObject: {fileID: 3931253503866156850, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6004108293177203588}
   m_SourcePrefab: {fileID: 100100000, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+--- !u!1 &973369729932208698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3931253503866156850, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+  m_PrefabInstance: {fileID: 4254921601025940744}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6004108293177203588
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973369729932208698}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9ddb7704fbac284799fdbdcbbbea2fd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &3915671746304190171 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 962580726374939603, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
+  m_PrefabInstance: {fileID: 4254921601025940744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7897273412387140528 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6238687201382723256, guid: cbc009fde50da1d4f9b8b75d90b0a883, type: 3}
@@ -120,12 +182,8 @@ MonoBehaviour:
     shootingPattern: 0
     numberOfProjectiles: 1
     fireRate: 0.6
-    projectileSpeed: 25
     projectileAngleSpread: 2
-    projectileSize: 1
     shootDirection: 1
-    damage: 10
-    projectileColor: {fileID: 2100000, guid: 9c44ea0b635c0dc4bbe59d7f83c4fc2d, type: 2}
     projectileSettings:
       projectileSpeed: 25
       projectileSize: 1

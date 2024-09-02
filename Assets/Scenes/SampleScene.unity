@@ -14854,42 +14854,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1450810314699753757, guid: 64cfde8b70135064f98bcd5c5d7ac4d5, type: 3}
-      propertyPath: specialAttackList.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1450810314699753757, guid: 64cfde8b70135064f98bcd5c5d7ac4d5, type: 3}
-      propertyPath: specialAttackList.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 5d7edf9b238d1ae4fbde4e54af4084e1, type: 2}
-    - target: {fileID: 1450810314699753757, guid: 64cfde8b70135064f98bcd5c5d7ac4d5, type: 3}
-      propertyPath: specialAttackList.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 5d7edf9b238d1ae4fbde4e54af4084e1, type: 2}
-    - target: {fileID: 2831833195993917186, guid: 64cfde8b70135064f98bcd5c5d7ac4d5, type: 3}
-      propertyPath: combatData.fireRate
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2831833195993917186, guid: 64cfde8b70135064f98bcd5c5d7ac4d5, type: 3}
-      propertyPath: combatData.projectileSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 2831833195993917186, guid: 64cfde8b70135064f98bcd5c5d7ac4d5, type: 3}
-      propertyPath: combatData.shootingPattern
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2831833195993917186, guid: 64cfde8b70135064f98bcd5c5d7ac4d5, type: 3}
-      propertyPath: combatData.projectileAngleSpread
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4833475735820349739, guid: 64cfde8b70135064f98bcd5c5d7ac4d5, type: 3}
-      propertyPath: lineRenderer
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4833475735820349739, guid: 64cfde8b70135064f98bcd5c5d7ac4d5, type: 3}
-      propertyPath: laserFirePoint
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5791657190816594277, guid: 64cfde8b70135064f98bcd5c5d7ac4d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -14930,17 +14894,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7710721701748542015, guid: 64cfde8b70135064f98bcd5c5d7ac4d5, type: 3}
-      propertyPath: maxHealth
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8495893778198427379, guid: 64cfde8b70135064f98bcd5c5d7ac4d5, type: 3}
-      propertyPath: dashCooldown
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 34045580081507855, guid: 64cfde8b70135064f98bcd5c5d7ac4d5, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64cfde8b70135064f98bcd5c5d7ac4d5, type: 3}
