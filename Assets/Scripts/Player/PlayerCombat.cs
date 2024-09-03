@@ -45,11 +45,13 @@ public class PlayerCombat : MonoBehaviour
     void OnEnable()
     {
         health.OnDeath += Die;
+        EnemyBommerr.OnEnemyExplode += HandleExplosionDamage;
     }
 
     void OnDisable()
     {
         health.OnDeath -= Die;
+        EnemyBommerr.OnEnemyExplode -= HandleExplosionDamage;
     }
 
     public void AddBulletSpread()
@@ -104,6 +106,11 @@ public class PlayerCombat : MonoBehaviour
                 UIManager.Instance.UpdatePlayerHealthSliderValue(health.CurrentHealth);
             }
         }
+    }
+
+    void HandleExplosionDamage(string damageDealerTag, int damage)
+    {
+        TakeDamage(damageDealerTag, damage, PlayerController.Instance.CanTakeDamage);
     }
 
     public void ResetSpecialAttackBar()
