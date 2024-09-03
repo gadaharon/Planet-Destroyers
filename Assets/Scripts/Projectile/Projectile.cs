@@ -15,10 +15,14 @@ public class Projectile : MonoBehaviour
     ParticleSystem hitVFX;
     Bounds bounds;
     Transform t;
+    SpriteRenderer sr;
+    CapsuleCollider2D capsuleCollider2D;
 
     void Awake()
     {
         t = transform;
+        sr = GetComponent<SpriteRenderer>();
+        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
     }
 
     void Start()
@@ -38,8 +42,8 @@ public class Projectile : MonoBehaviour
         this.projectileSettings = projectileSettings;
         speed = projectileSettings.projectileSpeed;
         damage = projectileSettings.damage;
-        SetProjectileSize(projectileSettings.projectileSize);
-        SetProjectileColor(projectileSettings.projectileColor);
+        SetProjectileSize(projectileSettings.projectileSize, projectileSettings.projectileType);
+        SetProjectileSprite(projectileSettings.projectileColor);
     }
 
     void Move()
@@ -80,13 +84,15 @@ public class Projectile : MonoBehaviour
         hitVFX.Play();
     }
 
-    void SetProjectileColor(Material material)
+    void SetProjectileSprite(Material material)
     {
-        gameObject.GetComponent<SpriteRenderer>().material = material;
+        sr.sprite = GameResources.Instance.GetProjectileSpriteByType(projectileSettings.projectileType);
+        sr.material = material;
     }
 
-    void SetProjectileSize(float size)
+    void SetProjectileSize(float size, ProjectileType projectileType)
     {
+        capsuleCollider2D.size = HelperUtils.GetProjectileSizeByType(projectileType);
         if (t.localScale.x != size)
         {
             t.localScale = Vector3.one * size;
@@ -104,7 +110,7 @@ public class Projectile : MonoBehaviour
     void ReleaseProjectile()
     {
         gameObject.tag = "Projectile";
-        SetProjectileSize(defaultProjectileSize);
+        SetProjectileSize(defaultProjectileSize, ProjectileType.Star);
         ProjectilePool.Instance.ReturnProjectile(gameObject);
     }
 }
