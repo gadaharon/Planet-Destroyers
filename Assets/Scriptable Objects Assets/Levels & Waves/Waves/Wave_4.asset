@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf2fbb2209f06b49a4bceb97c158a40, type: 3}
   m_Name: Wave_4
   m_EditorClassIdentifier: 
-  numberOfEnemiesInWave: 80
+  numberOfEnemiesInWave: 100
   enemyPrefabList:
   - {fileID: 7897273412387140528, guid: 042b60305c9d8b440afe24707dca1067, type: 3}
   - {fileID: 5885966413412505954, guid: ff5a0dd4391b80b49b6c4163cd0d09c2, type: 3}
   - {fileID: 5189925275518449177, guid: 0fd0446ad731cc545b008433ed37444f, type: 3}
-  spawnInterval: 7
+  spawnInterval: 4
   numberOfEnemiesPerSpawn: 2
   hasBoss: 1
   bossPrefab: {fileID: 1766524352385845643, guid: 785ffc2c54ddd124f8e3359705acfc64, type: 3}

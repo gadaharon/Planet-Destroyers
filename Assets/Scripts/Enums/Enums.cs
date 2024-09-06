@@ -19,6 +19,5 @@ public enum ShootingPattern
 
 public enum SpecialAttackType
 {
-    LasersAOE,
     MissilesAOE
 }

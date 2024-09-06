@@ -1,46 +1,71 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LasersShooter : MonoBehaviour
+public class LasersShooter : MonoBehaviour, ISpecialAttack
 {
     [SerializeField] GameObject laserCanonPrefab;
-    [SerializeField] float rotationSpeed = 100f;
+    [SerializeField] List<Transform> canonsPositions;
+    [SerializeField] bool laserOn = false;
+    [SerializeField] float shootingTime = 5f;
+    [SerializeField] string targetLayerName;
+    [SerializeField] string damageDealerTag;
 
-    int numberOfCanons = 8;
-    BoxCollider2D collider;
-    Bounds bounds;
     List<LaserCanon> laserCanons = new List<LaserCanon>();
-
-    void Awake()
-    {
-        collider = GetComponent<BoxCollider2D>();
-        bounds = collider.bounds;
-    }
+    Transform lasersParent;
 
     void Update()
     {
-        transform.position = PlayerController.Instance.transform.position;
-        transform.Rotate(Vector3.forward, -rotationSpeed * Time.deltaTime);
-
-        UpdateLaserCanons();
+        if (laserOn)
+        {
+            UpdateLaserCanons();
+        }
     }
 
     void Start()
     {
-        GenerateLaserCanons();
+        lasersParent = GameObject.Find("Lasers").transform;
+        if (lasersParent == null) { lasersParent = transform; }
     }
 
-    void GenerateLaserCanons()
+    public void FireSpecialAttack()
     {
-        for (int i = 0; i < numberOfCanons; i++)
+        if (laserOn) { return; }
+
+        if (laserCanons.Count == 0)
+        {
+            GenerateLaserCanons(targetLayerName, damageDealerTag);
+        }
+        laserOn = true;
+        ToggleLasers(true);
+
+        Invoke(nameof(TurnLaserOff), shootingTime);
+    }
+
+    void ToggleLasers(bool isActive)
+    {
+        foreach (LaserCanon canon in laserCanons)
+        {
+            canon.gameObject.SetActive(isActive);
+        }
+    }
+
+    void TurnLaserOff()
+    {
+        laserOn = false;
+        ToggleLasers(false);
+    }
+
+    void GenerateLaserCanons(string targetLayerName, string damageDealerTag)
+    {
+        for (int i = 0; i < canonsPositions.Count; i++)
         {
             Quaternion rotation;
-            Vector2 canonPosition = bounds.center;
-            rotation = Quaternion.Euler(0, 0, i * 45);
-            GameObject laserGO = Instantiate(laserCanonPrefab, canonPosition, rotation, transform);
+            rotation = Quaternion.Euler(0, 0, 180);
+            GameObject laserGO = Instantiate(laserCanonPrefab, canonsPositions[i].position, rotation, lasersParent);
+            laserGO.GetComponent<LaserCanon>().Init(targetLayerName, damageDealerTag, canonsPositions[i]);
             LaserCanon laser = laserGO.GetComponent<LaserCanon>();
             laserCanons.Add(laser);
+            laserGO.SetActive(false);
         }
     }
 

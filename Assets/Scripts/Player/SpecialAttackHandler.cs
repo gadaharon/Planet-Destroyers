@@ -8,25 +8,13 @@ public class SpecialAttackHandler : MonoBehaviour
     public GameObject FireRandomSpecialAttack()
     {
         SpecialAttackSO randomSpecialAttack = specialAttackList[Random.Range(0, specialAttackList.Count)];
-
-        if (randomSpecialAttack.attackType == SpecialAttackType.LasersAOE)
-        {
-            return ShootLaserCanons(randomSpecialAttack);
-        }
-        else if (randomSpecialAttack.attackType == SpecialAttackType.MissilesAOE)
+        Debug.Log("SPECIAL ATTACK TYPE: " + randomSpecialAttack.attackType);
+        if (randomSpecialAttack.attackType == SpecialAttackType.MissilesAOE)
         {
             return FireMissiles(randomSpecialAttack);
         }
 
         return null;
-    }
-
-
-    GameObject ShootLaserCanons(SpecialAttackSO laserAttack)
-    {
-        GameObject attack = Instantiate(laserAttack.prefab, transform.position, Quaternion.identity);
-        Destroy(attack, laserAttack.attackDuration);
-        return attack;
     }
 
     GameObject FireMissiles(SpecialAttackSO missilesAttack)

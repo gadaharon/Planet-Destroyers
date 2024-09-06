@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,9 +12,14 @@ public class BossHandler : EnemyBase
 
     [SerializeField] float combatDataChangeCooldown = 30f;
     [SerializeField] CombatData defaultAttackData;
-    [SerializeField] CombatData specialAttackData;
+    [SerializeField] List<CombatData> secondaryAttacks;
+
+    [Header("SPECIAL ATTACK PARAMETERS")]
+    [SerializeField] float minSpecialAttackColldown = 10f;
+    [SerializeField] float maxSpecialAttackCooldown = 20f;
 
     CombatData currentCombatData;
+    ISpecialAttack[] specialAttacks;
 
     Bounds bounds;
     Health health;
@@ -21,22 +27,29 @@ public class BossHandler : EnemyBase
 
     Vector3 targetPosition;
 
-    bool bossReady = false;
+    [Header("FOR TESTING")]
+    [SerializeField] bool bossReady = false;
 
+    bool isSecondaryAttackActive = false;
     bool isSpecialAttackActive = false;
 
     float secondaryAttackTimer = 20f;
 
     float currentCombatDataTimer;
+    float currentSpecialAttackTimer;
 
     float lastTimeShoot = 0f;
+
+    const float specialAttackDuration = 5f;
 
 
     void Awake()
     {
         health = GetComponent<Health>();
         shooterManager = GetComponent<ShooterManager>();
+        specialAttacks = GetComponents<ISpecialAttack>();
         currentCombatDataTimer = combatDataChangeCooldown;
+        ResetSpecialAttackTimer();
     }
 
     void OnEnable()
@@ -88,28 +101,66 @@ public class BossHandler : EnemyBase
         }
 
         HandleCombatDataChange();
+        HandleSpecialAttack();
     }
 
     void HandleCombatDataChange()
     {
         currentCombatDataTimer -= Time.deltaTime;
-        if (currentCombatDataTimer <= 0 && !isSpecialAttackActive)
+        if (currentCombatDataTimer <= 0 && !isSecondaryAttackActive)
         {
             // change combatdata
-            StartCoroutine(ChangeCombatDataRoutine());
+            CombatData randomSecondaryAttack = GetRandomSecondaryAttack();
+            if (randomSecondaryAttack != null)
+            {
+                StartCoroutine(ChangeCombatDataRoutine(randomSecondaryAttack));
+            }
         }
     }
 
-    IEnumerator ChangeCombatDataRoutine()
+    void HandleSpecialAttack()
     {
-        currentCombatData = specialAttackData;
-        isSpecialAttackActive = true;
+        currentSpecialAttackTimer -= Time.deltaTime;
+        if (currentSpecialAttackTimer <= 0)
+        {
+            FireRandomSpecialAttack();
+            Invoke(nameof(ResetSpecialAttackTimer), specialAttackDuration);
+        }
+    }
+
+    void ResetSpecialAttackTimer()
+    {
+        currentSpecialAttackTimer = Random.Range(minSpecialAttackColldown, maxSpecialAttackCooldown);
+    }
+
+    IEnumerator ChangeCombatDataRoutine(CombatData attackData)
+    {
+        currentCombatData = attackData;
+        isSecondaryAttackActive = true;
 
         yield return new WaitForSeconds(secondaryAttackTimer);
 
         currentCombatDataTimer = combatDataChangeCooldown;
         currentCombatData = defaultAttackData;
-        isSpecialAttackActive = false;
+        isSecondaryAttackActive = false;
+    }
+
+    CombatData GetRandomSecondaryAttack()
+    {
+        if (secondaryAttacks.Count > 0)
+        {
+            int randomSecondaryAttackIndex = Random.Range(0, secondaryAttacks.Count);
+            return secondaryAttacks[randomSecondaryAttackIndex];
+        }
+        return null;
+    }
+    void FireRandomSpecialAttack()
+    {
+        if (specialAttacks.Length > 0)
+        {
+            int randomSpecialAttackIndex = Random.Range(0, specialAttacks.Length);
+            specialAttacks[randomSpecialAttackIndex].FireSpecialAttack();
+        }
     }
 
 

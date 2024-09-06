@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpecialAttack_Missiles
   m_EditorClassIdentifier: 
   specialAttackName: Missiles
-  attackType: 1
+  attackType: 0
   prefab: {fileID: 1789736320598000864, guid: 7de0326ed0e9c654d93c631af71f47db, type: 3}
   hasAttackDuration: 0
   attackDuration: 5

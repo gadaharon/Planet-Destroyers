@@ -103,6 +103,6 @@ public class EnemyBommerr : EnemyBase
 
     void Die()
     {
-        Explode();
+        Destroy(gameObject);
     }
 }

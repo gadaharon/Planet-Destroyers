@@ -3,14 +3,14 @@ using UnityEngine;
 public class LaserCanon : MonoBehaviour
 {
     [SerializeField] float distanceRay = 50f;
-    [SerializeField] Transform laserFirePosition;
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] int laserDamage = 10;
     [SerializeField] ParticleSystem laserImpactVFX;
 
     Transform t;
-    LayerMask layer;
-    int layerMask;
+    Transform laserCanonTransform;
+    int layerMask; // target layer to hit
+    string damageDealerTag;
 
     float shootOffset = .2f;
     float lastShootTime = 0f;
@@ -20,32 +20,35 @@ public class LaserCanon : MonoBehaviour
         t = transform;
     }
 
-    void Start()
+    public void Init(string targetLayerName, string damageDealerTag, Transform laserCanon)
     {
-        layer = LayerMask.NameToLayer("Enemy");
+        LayerMask layer = LayerMask.NameToLayer(targetLayerName);
         layerMask = 1 << layer.value;
+        this.damageDealerTag = damageDealerTag;
+        laserCanonTransform = laserCanon;
     }
 
     public void ShootLaser()
     {
+        t.position = laserCanonTransform.position;
         if (Physics2D.Raycast(t.position, t.up, distanceRay, layerMask))
         {
-            RaycastHit2D hit = Physics2D.Raycast(laserFirePosition.position, t.up, distanceRay, layerMask);
-            PlayLaserImpactVFX(hit.distance);
-            Draw2DRay(laserFirePosition.position, hit.point);
+            RaycastHit2D hit = Physics2D.Raycast(t.position, t.up, distanceRay, layerMask);
+            PlayLaserImpactVFX(hit.point.y);
+            Draw2DRay(t.position, new Vector2(t.position.x, hit.point.y));
 
             if (hit.collider.gameObject.GetComponent<IDamagable>() != null)
             {
                 if (Time.time > lastShootTime + shootOffset)
                 {
                     lastShootTime = Time.time;
-                    hit.collider.gameObject.GetComponent<IDamagable>().TakeDamage("Player", laserDamage);
+                    hit.collider.gameObject.GetComponent<IDamagable>().TakeDamage(damageDealerTag, laserDamage);
                 }
             }
         }
         else
         {
-            Draw2DRay(laserFirePosition.position, laserFirePosition.transform.up * distanceRay);
+            Draw2DRay(t.position, new Vector2(t.position.x, t.up.y * distanceRay));
             if (laserImpactVFX.isPlaying)
             {
                 laserImpactVFX.Stop();
@@ -56,8 +59,8 @@ public class LaserCanon : MonoBehaviour
     void PlayLaserImpactVFX(float distance)
     {
         if (laserImpactVFX.isPlaying) { return; }
-        Vector2 position = new Vector2(0, distance + 1);
-        laserImpactVFX.gameObject.transform.localPosition = position;
+        Vector2 position = new Vector2(t.position.x, distance);
+        laserImpactVFX.gameObject.transform.position = position;
         laserImpactVFX.Play();
     }
 

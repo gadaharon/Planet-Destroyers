@@ -25,6 +25,7 @@ public class MissilesShooter : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
+            Debug.Log("FIRE MISSILES");
             FireMissiles();
         }
     }

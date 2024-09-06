@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour, IDamagable
     public static Action OnEnemyDeath;
 
     [SerializeField] bool lookAtPlayer = true;
+    [SerializeField] bool flipPlayerSprite = true;
     [SerializeField] Transform sprite;
 
     Transform player;
@@ -30,9 +31,8 @@ public class EnemyController : MonoBehaviour, IDamagable
         if (lookAtPlayer)
         {
             LookAtPlayer();
-            FlipSprite();
         }
-
+        FlipSprite();
         if (enemyBase.isRangeAttackEnemy)
         {
             enemyBase.HandleDamage();
@@ -53,15 +53,19 @@ public class EnemyController : MonoBehaviour, IDamagable
     {
         if (sprite == null) { return; }
 
-        if (transform.position.x < player.position.x)
+        sprite.rotation = Quaternion.Euler(0, 0, 0);
+        if (flipPlayerSprite)
         {
-            isFacingRight = true;
-            sprite.rotation = Quaternion.Euler(0, 180, 0);
-        }
-        else if (transform.position.x > player.position.x)
-        {
-            isFacingRight = false;
-            sprite.rotation = Quaternion.Euler(0, 0, 0);
+            if (transform.position.x < player.position.x)
+            {
+                isFacingRight = true;
+                sprite.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else if (transform.position.x > player.position.x)
+            {
+                isFacingRight = false;
+                sprite.rotation = Quaternion.Euler(0, 0, 0);
+            }
         }
     }
 
