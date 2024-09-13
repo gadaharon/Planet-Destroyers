@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf2fbb2209f06b49a4bceb97c158a40, type: 3}
+  m_Name: Wave_9
+  m_EditorClassIdentifier: 
+  numberOfEnemiesInWave: 0
+  enemyPrefabList: []
+  spawnInterval: 0
+  numberOfEnemiesPerSpawn: 0
+  hasBoss: 1
+  bossPrefab: {fileID: 3797525871737356246, guid: a55baac98acdbeb4e90f29877d164aad, type: 3}
+  bossStartPosition: {x: 0, y: 40}
+  bossEndPosition: {x: 0, y: 16}

@@ -428,7 +428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!320 &52313479
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -7102,8 +7102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnAreaCollider: {fileID: 279993528}
   levelList:
-  - {fileID: 11400000, guid: 2505290e8c68dcb4e837e1986b25c5f9, type: 2}
-  - {fileID: 11400000, guid: 437a43876de0f5542af275db1c6b6b83, type: 2}
+  - {fileID: 11400000, guid: 092062f0b7d695445b8a9a3bbd36d0a7, type: 2}
   numberOfEnemies: 0
 --- !u!1001 &1024508887
 PrefabInstance:
@@ -8048,7 +8047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1353783453
 MonoBehaviour:
   m_ObjectHideFlags: 0
